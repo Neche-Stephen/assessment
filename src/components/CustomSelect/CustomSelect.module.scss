@@ -1,0 +1,71 @@
+.customSelect {
+    position: relative;
+    width: 196px;
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  .selectSelected {
+    /* border: 1px solid var(--crimsonRed); */
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .arrowDown {
+    margin-left: auto;
+    padding-left: 10px;
+  }
+  
+  .selectItems {
+    position: absolute;
+    margin-top: 10px;
+    background-color: white;
+    /* border: 1px solid var(--crimsonRed); */
+    z-index: 99;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    border-radius: 18px;
+  }
+
+  /* Hide scrollbar for WebKit browsers */
+.selectItems::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.selectItems {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+  
+  .selectItems div {
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .selectItems div:hover {
+    background-color: #F7FAFD;
+  }
+  
+  .prefix{
+      margin-right: 10px;
+      font-family: 'Open Sans';
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.07px;
+      color: #4B4E61;
+  }
+
+  .default{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.07px;
+    color: #100A37;
+  }

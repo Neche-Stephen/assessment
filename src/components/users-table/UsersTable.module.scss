@@ -1,0 +1,62 @@
+
+.table_container{
+    box-shadow: 0px 10px 60px 0px #E2ECF980;
+    border-radius: 30px;
+
+
+    .all_users{
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 33px;
+        letter-spacing: -0.01em;    
+        margin-bottom: 7px;
+    }
+
+    .active_members{
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: -0.01em;
+        text-align: left;
+        color: #16C098;        
+
+    }
+    
+    .users_table{
+
+        thead th{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            letter-spacing: -0.01em;
+            color: #B5B7C0;    
+            // border: 1px solid red;
+            text-align: left;
+            padding-right: 8px;
+            padding-bottom: 12px;
+        
+        }
+
+        tbody td{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            letter-spacing: -0.01em;
+            color: #292D32;
+            text-align: left;
+            padding-right: 8px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            border-top: 1px solid #EEEEEE;
+            border-bottom: 1px solid #EEEEEE;
+            // border: 1px solid green;
+        
+        }
+        
+
+    } 
+    
+   
+}
+
