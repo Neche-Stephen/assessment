@@ -36,6 +36,10 @@ A React-based application that implements a login page and dashboard for display
 - **CSS/SCSS** - Styling for components.
 - **HTML5** - Structure of the application.
 
+## Live Demo
+
+You can visit the live site deployed here: [Live Demo](https://pearmonie-assessment1.vercel.app/)
+
 ## Installation
 
 1. Clone the repository:
