@@ -22,13 +22,9 @@ const [tableSearch, setTableSearch] = useState(''); // Search value for the tabl
 const [sortBy, setSortBy] = useState('firstName'); // default sorting by first name
 const [sortOrder, setSortOrder] = useState('asc'); // default ascending order
 const [page, setPage] = useState(1);
-// const [totalUsers, setTotalUsers] = useState(0);
 const [limit, setLimit] = useState(8); // limit of users per page
 
 
-
-
-// useEffect(() => {
 //     const fetchData = async () => {
 //       const data = await getUsers(limit, (page - 1) * limit, search, sortBy, sortOrder, tableSearch);
 //       setUsers(data.users);
@@ -77,11 +73,9 @@ useEffect(() => {
 
 
   return (
-    <div className='border flex'>
+    <div className='flex'>
 
-        {/* <div className=''> */}
             <Sidebar />
-        {/* </div> */}
 
        <div className='px-4 sm:px-10 w-[70%] lg-[78.7%] flex-grow pt-8 bg-[#FAFBFF] pb-12'>
 
