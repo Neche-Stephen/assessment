@@ -14,6 +14,9 @@ import IMAGES from "../../assets/dashboard/"
 export default function Dashboard() {
 
   const dispatch = useDispatch();
+
+  const { userDetails } = useSelector((state) => state.auth);
+  console.log("User Details", userDetails);
   const { users, total, isLoading } = useSelector((state) => state.users);
 
 // const [users, setUsers] = useState([]);
@@ -80,7 +83,7 @@ useEffect(() => {
        <div className='px-4 sm:px-10 w-[70%] lg-[78.7%] flex-grow pt-8 bg-[#FAFBFF] pb-12'>
 
             <div className='flex flex-wrap justify-between mb-8'>
-                <div>Hello Evano 👋🏼,</div>
+                <div>Hello {userDetails?.firstName || "Evano"} 👋🏼,</div>
                 <div className='hidden md:block'>
                 <SearchInput 
                     searchValue={search} 

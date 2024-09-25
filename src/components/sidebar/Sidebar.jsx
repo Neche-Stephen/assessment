@@ -1,7 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import IMAGES from "../../assets/sidebar/";
-import { MdChevronRight } from "react-icons/md";
-import dashboard from '../../assets/dashboard';
 import MobileSidebar from './MobileSidebar';
 import DesktopSidebar from './DesktopSidebar';
 

@@ -2,8 +2,12 @@ import React, { useState, useRef } from 'react';
 import IMAGES from "../../assets/sidebar/";
 import { MdChevronRight } from "react-icons/md";
 import dashboard from '../../assets/dashboard';
+import { useSelector } from 'react-redux';
+
 
 export default function MobileSidebar({show, toggleSidebar}) {
+
+    const { userDetails } = useSelector((state) => state.auth);
    
     // State to track active sidebar item
     const [activeItem, setActiveItem] = useState('users'); 

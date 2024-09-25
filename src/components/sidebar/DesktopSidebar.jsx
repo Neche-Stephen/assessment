@@ -3,8 +3,13 @@ import IMAGES from "../../assets/sidebar/";
 import { MdChevronRight } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 import dashboard from '../../assets/dashboard';
+import { useSelector } from 'react-redux';
+
+
 
 export default function DesktopSidebar({show, toggleSidebar}) {
+    const { userDetails } = useSelector((state) => state.auth);
+
      // State to track active sidebar item
      const [activeItem, setActiveItem] = useState('users'); // Default to none active
 
@@ -69,8 +74,8 @@ export default function DesktopSidebar({show, toggleSidebar}) {
                 <div className='flex gap-2'>
                         <div><img src={IMAGES.EVANO} alt="" /></div>
                         <div>
-                            <div className='text-[14px] leading-[21px]'>Evano</div>
-                            <div className='text-[12px] leading-[18px] text-[#757575]'>Project Manager</div>
+                            <div className='text-[14px] leading-[21px]'>{userDetails.firstName || "Evano"}</div>
+                            <div className='text-[12px] leading-[18px] text-[#757575]'>{userDetails.company.title || "Project Manager"}</div>
                         </div>
                 </div>
                     <FaChevronDown color='#757575'/>
