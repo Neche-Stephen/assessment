@@ -15,8 +15,8 @@ export default function MobileSidebar({show, toggleSidebar}) {
 
 
   return (
-    <div className='pt-8 px-4 flex-none'>
-            <div className='w-full'>
+    <div className='pt-8 px-4 flex-none min-h-[100vh]'>
+            <div className='w-full relative min-h-[100vh]'>
                 <div className='flex flex-wrap items-center space-x-2 mb-8 cursor-pointer' onClick={toggleSidebar}>
                     <div><img className='' src={IMAGES.SETTING} alt="settings" /></div>
                 </div>
@@ -43,6 +43,8 @@ export default function MobileSidebar({show, toggleSidebar}) {
                     </div>
                     
                 </div>
+
+                <div className='flex justify-center absolute top-[500px]'><img src={IMAGES.EVANO} alt="" /></div>
             </div>
         </div>
   )
