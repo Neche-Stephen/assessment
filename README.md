@@ -98,7 +98,8 @@ API calls are handled using Axios in `src/services/authService.js` and `src/serv
 
 State management is implemented using **Redux Toolkit**. 
 
-- The `userSlice.js` file stores user data in the global state.
+- The `userSlice.js` file stores all users data in the global state.
+- The `authSlice.js` file store details of an authenticated user.
 - You can find the Redux store setup in `src/store/store.js`.
 
 
