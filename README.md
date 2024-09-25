@@ -60,7 +60,7 @@ You can visit the live site deployed here: [Live Demo](https://pearmonie-assessm
    npm run dev
    ```
 
-   The app will run on `http://localhost:3000`.
+   The app will run on `http://localhost:5173`.
 
 ## Usage
 
