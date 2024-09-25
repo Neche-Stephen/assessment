@@ -13,7 +13,7 @@ export default function DesktopSidebar({show, toggleSidebar}) {
      };
 
   return (
-    <div className='pt-8 pl-4 pr-12 border md:w-[30%] lg:w-[21.3%] flex-grow'>
+    <div className='pt-8 pl-4 pr-12 md:w-[30%] lg:w-[21.3%] flex-grow'>
         <div className='w-full'>
             <div className='flex flex-wrap items-center space-x-2 mb-8 cursor-pointer' onClick={toggleSidebar}>
                 <div><img className='' src={IMAGES.SETTING} alt="settings" /></div>

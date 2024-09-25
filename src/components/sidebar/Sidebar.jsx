@@ -15,28 +15,28 @@ export default function Sidebar() {
 
     // Handlers for activating sidebar items
     const handleSetActive = (item) => {
-        setActiveItem(item); // Set the active item
+        setActiveItem(item);
     };
 
     const toggleSidebar = () => {
         setShow(!show);
     }
 
-    // Set up an event listener for window resizing
+    // Event listener for window resizing
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768); // Update `isMobile` based on the window width
         };
 
-        window.addEventListener('resize', handleResize); // Attach listener
+        window.addEventListener('resize', handleResize);
 
-        // Clean up the event listener on component unmount
+        
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
 
-    // Force MobileSidebar when screen is less than 768px
+    // For screens less than 768px, show only Mobile Sidebar
     if (isMobile) {
         return (
             <MobileSidebar show={show} toggleSidebar={toggleSidebar} />

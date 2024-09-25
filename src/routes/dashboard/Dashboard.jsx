@@ -73,7 +73,7 @@ useEffect(() => {
 
 
   return (
-    <div className='flex'>
+    <div className='flex min-h-[100vh]'>
 
             <Sidebar />
 
