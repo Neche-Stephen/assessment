@@ -14,8 +14,6 @@ A React-based application that implements a login page and dashboard for display
 8. [Testing](#testing)
 9. [Performance Optimization](#performance-optimization)
 10. [Folder Structure](#folder-structure)
-11. [Contributing](#contributing)
-12. [License](#license)
 
 ## Features
 
