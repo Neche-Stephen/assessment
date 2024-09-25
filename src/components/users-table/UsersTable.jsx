@@ -60,20 +60,22 @@ const handleSortClick = (field) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        users.map((user)=>{
-                            return (
-                                <tr key={user.id} >
-                                    <td>{`${user.firstName} ${user.lastName}`}</td>
-                                    <td>{user.company.name}</td>
-                                    <td>{user.phone}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.address.country}</td>
-                                    <td>{user.role === 'admin' ? <InactiveButton/> : <ActiveButton />}</td>
-                                </tr>
-                            )
-                        })
-                    }
+                {users.length > 0 ? (
+                        users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{`${user.firstName} ${user.lastName}`}</td>
+                                <td>{user.company.name}</td>
+                                <td>{user.phone}</td>
+                                <td>{user.email}</td>
+                                <td>{user.address.country}</td>
+                                <td>{user.role === 'admin' ? <InactiveButton /> : <ActiveButton />}</td>
+                            </tr>
+                        ))
+                    ) : (
+                    <tr>
+                        <td colSpan="6" style={{ textAlign: 'center' }}>No users available.</td>
+                    </tr>
+                    )}
                 </tbody>
             </table>
         </div>
@@ -99,7 +101,7 @@ const handleSortClick = (field) => {
                         key={pageNum}
                         onClick={() => onPageChange(pageNum)}
                         className={`px-3 py-1 rounded ${
-                        page === pageNum ? 'bg-purple-600 text-white' : 'text-gray-800 hover:bg-gray-200'
+                        page === pageNum ? 'bg-[#5932EA] text-white' : 'text-gray-800 hover:bg-gray-200'
                         }`}
                     >
                         {pageNum}
