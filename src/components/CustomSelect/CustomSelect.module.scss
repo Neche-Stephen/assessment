@@ -1,8 +1,10 @@
 .customSelect {
     position: relative;
-    width: 196px;
-    background-color: white;
+    // width: 196px;
+    background-color: #F9FBFF;
     border-radius: 8px;
+    // border: 1px solid #E5E5E5;
+
   }
   
   .selectSelected {
@@ -55,17 +57,18 @@
   
   .prefix{
       margin-right: 10px;
-      font-family: 'Open Sans';
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
-      line-height: 19.07px;
-      color: #4B4E61;
+      line-height: 18px;
+      letter-spacing: -0.01em;
+      color: #7E7E7E;
   }
 
   .default{
-    font-family: "Open Sans";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19.07px;
-    color: #100A37;
+    font-size: 12px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.01em;
   }

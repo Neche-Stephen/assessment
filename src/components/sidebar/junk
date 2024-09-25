@@ -1,0 +1,68 @@
+import React, { useState, useRef } from 'react';
+import IMAGES from "../../assets/sidebar/";
+import { MdChevronRight } from "react-icons/md";
+import dashboard from '../../assets/dashboard';
+
+export default function Sidebar() {
+    const sidebarRef = useRef(null);
+    const helpRef = useRef(null);
+    const usersRef = useRef(null);
+    const dashboardRef = useRef(null);
+
+    // State to track active sidebar item
+    const [activeItem, setActiveItem] = useState(''); // Default to none active
+
+    // Handlers for activating sidebar items
+    const handleSetActive = (item) => {
+        setActiveItem(item); // Set the active item
+    };
+
+    const toggleSidebar = () => {
+        if (window.innerWidth > 768) {
+            sidebarRef.current.classList.toggle('w-[8.33%]');
+            usersRef.current.classList.toggle('hidden');
+            helpRef.current.classList.toggle('hidden');
+            dashboardRef.current.classList.toggle('hidden');
+        }
+    };
+
+    return (
+        <div ref={sidebarRef} className='pt-8 pl-4 pr-12 w-[21.3%] flex-none'>
+            <div className='fixed'>
+                <div className='flex items-center space-x-2 mb-8 cursor-pointer' onClick={toggleSidebar}>
+                    <div><img className='w-full h-full' src={IMAGES.SETTING} alt="settings" /></div>
+                    <div className=' hidden lg:block text-[26px] font-[600] leading-[39px]' ref={dashboardRef}>Dashboard <span className='text-[10px] font-[400] leading-[15px]'>v.01</span></div>
+                </div>
+
+                <div 
+                    className={`flex p-3 rounded-[8px] items-center gap-2 mb-8 cursor-pointer ${activeItem === 'users' ? 'bg-[#5932EA] text-white' : 'bg-transparent'}`} onClick={() => handleSetActive('users')}
+                >
+                        <div className='flex-none'>
+                            <img 
+                                src={activeItem === 'users' ? IMAGES.USERS_ACTIVE : IMAGES.USERS} 
+                                alt="Users"/>
+                        </div>
+                        <div className='hidden md:flex items-center justify-between flex-grow' ref={usersRef}>
+                            <div className='mr-auto'>Users</div>
+                            <div><MdChevronRight /></div>
+                        </div>
+                </div>
+
+                <div 
+                    className={`flex p-3 rounded-[8px] items-center gap-2 mb-8 cursor-pointer ${activeItem === 'help' ? 'bg-[#5932EA] text-white' : 'bg-transparent'}`}
+                    onClick={() => handleSetActive('help')}
+                >
+                    <div className='flex-none'>
+                            <img 
+                                src={activeItem === 'help' ? IMAGES.HELP_ACTIVE : IMAGES.HELP} 
+                                alt="Users"/>
+                        </div>
+                    <div className='hidden md:flex items-center flex-grow' ref={helpRef}>
+                        <div className='mr-auto'>Help</div>
+                        <div><MdChevronRight /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

@@ -1,43 +1,54 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import IMAGES from "../../assets/sidebar/";
 import { MdChevronRight } from "react-icons/md";
 import dashboard from '../../assets/dashboard';
+import MobileSidebar from './MobileSidebar';
+import DesktopSidebar from './DesktopSidebar';
 
 export default function Sidebar() {
-    const sidebarRef = useRef(null);
-    const helpRef = useRef(null);
-    const usersRef = useRef(null);
-    const dashboardRef = useRef(null);
 
-    const toggleSidebar = () => {
-        sidebarRef.current.classList.toggle('w-[8.33%]');
-        usersRef.current.classList.toggle('hidden');
-        helpRef.current.classList.toggle('hidden');
-        dashboardRef.current.classList.toggle('hidden');
+    const [show, setShow] = useState(true); // State to track if sidebar is open or closed
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // State to track if screen is mobile
+   
+    // State to track active sidebar item
+    const [activeItem, setActiveItem] = useState(''); // Default to none active
+
+    // Handlers for activating sidebar items
+    const handleSetActive = (item) => {
+        setActiveItem(item); // Set the active item
     };
 
-    return (
-        <div ref={sidebarRef} className='pt-8 pl-2 w-[16.67%]'>
-            <div className='flex items-center' onClick={toggleSidebar}>
-                <div><img src={IMAGES.SETTING} alt="settings" /></div>
-                <div ref={dashboardRef}>Dashboard <span>v.01</span></div>
-            </div>
+    const toggleSidebar = () => {
+        setShow(!show);
+    }
 
-            <div className='flex items-center gap-2'>
-                    <div><img src={IMAGES.USERS} alt="Users"/></div>
-                    <div className='flex items-center' ref={usersRef}>
-                        <div className='mr-auto'>Users</div>
-                        <div><MdChevronRight /></div>
-                    </div>
-            </div>
+    // Set up an event listener for window resizing
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768); // Update `isMobile` based on the window width
+        };
 
-            <div className='flex items-center gap-2'>
-                <div><img src={IMAGES.HELP} alt="Help" /></div>
-                <div className='flex items-center' ref={helpRef}>
-                    <div className='mr-auto'>Help</div>
-                    <div><MdChevronRight /></div>
-                </div>
-            </div>
-        </div>
+        window.addEventListener('resize', handleResize); // Attach listener
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    // Force MobileSidebar when screen is less than 768px
+    if (isMobile) {
+        return (
+            <MobileSidebar show={show} toggleSidebar={toggleSidebar} />
+        );
+    }
+
+    // For screens wider than 768px, allow toggle between Desktop and Mobile Sidebar
+    return show ? (
+        <MobileSidebar show={show} toggleSidebar={toggleSidebar} />
+    ) : (
+        <DesktopSidebar show={show} toggleSidebar={toggleSidebar} />
     );
+
+
 }

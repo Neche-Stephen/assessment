@@ -9,13 +9,13 @@ export default function UsersTable({ users, sortBy, sortOrder, onSortChange, pag
 
 const ActiveButton = () => {
     return (
-        <button className='bg-blue-500 text-white px-4 py-2 rounded-md'>Active</button>
+        <button className={`${styles.active_btn}`}>Active</button>
     )
 }
 
 const InactiveButton = () => {
     return (
-        <button className='bg-red-500 text-white px-4 py-2 rounded-md'>Active</button>
+        <button className={`${styles.inactive_btn}`}>Inactive</button>
     )
 }
 
@@ -33,50 +33,54 @@ const handleSortClick = (field) => {
     <div className={`${styles.table_container} bg-white p-8`}>
 
         <div className={`${styles.all_users}`}>All Users</div>
-        <div className='flex justify-between gap-2 mb-8'>
+        <div className='flex flex-wrap justify-between gap-2 mb-8'>
             <div className={`${styles.active_members}`}>Active Members</div>
-            <SearchInput 
-                searchValue={tableSearch} 
-                onSearchChange={handleTableSearchChange} 
-                placeholder="Search" 
-                bg = '#F9FBFF'
-            />
-            <CustomSelect options={['firstName', 'lastName', 'company', 'email']} prefix="Sort by:" defaultOption="firstName" onChange={handleSortClick}/>
+            <div>
+                <SearchInput 
+                    searchValue={tableSearch} 
+                    onSearchChange={handleTableSearchChange} 
+                    placeholder="Search" 
+                    bg = '#F9FBFF'
+                />
+            </div>
+            <CustomSelect options={['firstName', 'lastName', 'email']} prefix="Sort by:" defaultOption="firstName" onChange={handleSortClick}/>
 
         </div>
 
-        <table className={`${styles.users_table} mb-8`}>
-            <thead>
-                <tr>
-                    <th>Users Name</th>
-                    <th>Company</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Country</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    users.map((user)=>{
-                        return (
-                            <tr key={user.id} >
-                                <td>{`${user.firstName} ${user.lastName}`}</td>
-                                <td>{user.company.name}</td>
-                                <td>{user.phone}</td>
-                                <td>{user.email}</td>
-                                <td>{user.address.country}</td>
-                                <td>{user.role === 'admin' ? <InactiveButton/> : <ActiveButton />}</td>
-                            </tr>
-                        )
-                    })
-                }
-            </tbody>
-        </table>
+        <div className='overflow-x-auto'>
+            <table className={`${styles.users_table} mb-8 min-w-full`}>
+                <thead>
+                    <tr>
+                        <th>Users Name</th>
+                        <th>Company</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        users.map((user)=>{
+                            return (
+                                <tr key={user.id} >
+                                    <td>{`${user.firstName} ${user.lastName}`}</td>
+                                    <td>{user.company.name}</td>
+                                    <td>{user.phone}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.address.country}</td>
+                                    <td>{user.role === 'admin' ? <InactiveButton/> : <ActiveButton />}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
 
         {/* Pagination Controls */}
-       <div className='flex items-center justify-between'>
-            <div className='text-[#B5B7C0]'>
+       <div className='flex items-center justify-between mt-8 lg:mt-0'>
+            <div className='text-[#B5B7C0] hidden sm:block'>
                 Showing data {Math.min((page - 1) * limit + 1, totalUsers)} to {Math.min(page * limit, totalUsers)} of {totalUsers.toLocaleString()} entries
             </div>
             <div className="flex justify-center items-center space-x-1">
